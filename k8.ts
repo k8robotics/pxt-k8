@@ -43,7 +43,7 @@ namespace infrared {
     /**
      * Reads binary values from 3 IR sensors
      * @param sensor which of the three sensors
-     * @param colour whether the sensor looks for black or white 
+     * @param colour whether the sensor looks for black or white
      */
     //% block
     export function checkSensors(sensor: k8IRsensor, colour: k8Colour): boolean {
@@ -211,6 +211,20 @@ namespace motion {
             pins.analogWritePin(M1_PWM, motorSpeed)
         }
     }
+    /**
+    * Simplified drive function built on top of motorControl
+    */
+    //% block
+    //% leftWheelSpeed.min=-100 leftWheelSpeed.max=100
+    //% rightWheelSpeed.min=-100 rightWheelSpeed.max=100
+    //% weight=80
+    export function drive(leftWheelSpeed: number, rightWheelSpeed: number): void {
+    let leftWheelDirection = leftWheelSpeed >= 0 ? k8Invert.FORWARD : k8Invert.REVERSE
+    let rightWheelDirection = rightWheelSpeed >= 0 ? k8Invert.FORWARD : k8Invert.REVERSE
+
+    motorControl(k8Moto.LEFT, leftWheelDirection, Math.abs(leftWheelSpeed))
+    motorControl(k8Moto.RIGHT, rightWheelDirection, Math.abs(rightWheelSpeed))
+  }
 }
 
 //% weight=100 color=#421C52 icon="\uf1b9"
