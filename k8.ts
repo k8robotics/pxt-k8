@@ -45,10 +45,30 @@ namespace infrared {
     * Return the real IR values of IR sensors
     */
     //% block
-    export function readSensors(): number[] {
-        let reads: number[]
-        reads = [pins.analogReadPin(AnalogPin.P0), pins.analogReadPin(AnalogPin.P1), pins.analogReadPin(AnalogPin.P2)]
-        return reads
+    export function readLeftSensor(): number[] {
+    let sensor: number
+    sensor = pins.analogReadPin(AnalogPin.P0)
+    return sensor
+    }
+
+    /*
+    * Return the real IR values of IR sensors
+    */
+    //% block
+    export function readCentreSensor(): number[] {
+      let sensor: number
+      sensor = pins.analogReadPin(AnalogPin.P1)
+      return sensor
+    }
+
+    /*
+    * Return the real IR values of IR sensors
+    */
+    //% block
+    export function readRightSensor(): number[] {
+      let sensor: number
+      sensor = pins.analogReadPin(AnalogPin.P2)
+      return sensor
     }
 
     /**
