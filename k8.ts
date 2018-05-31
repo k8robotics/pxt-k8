@@ -40,6 +40,17 @@ enum k8Moto {
 
 //% weight=100 color=#18DC29 icon="\uf06e"
 namespace infrared {
+
+    /*
+    * Return the real IR values of IR sensors
+    */
+    //% block
+    export function readSensors(): [number, number, number] {
+      let out: [number, number, number]
+      out = [pins.analogReadPin(AnalogPin.P0), pins.analogReadPin(AnalogPin.P1), pins.analogReadPin(AnalogPin.P2)]
+      return out
+    }
+
     /**
      * Reads binary values from 3 IR sensors
      * @param sensor which of the three sensors
