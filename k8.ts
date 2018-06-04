@@ -42,33 +42,25 @@ enum k8Moto {
 namespace infrared {
 
     /*
-    * Return the real IR values of IR sensors
+    * Return the state of each sensor encoded as a 3 digit number
+    * Each digit represents the on/off state of a sensor
+    * Hundreds place is 'L', tens place is 'C', ones place is 'R'
     */
     //% block
-    export function readLeftSensor(): number {
-    let sensor: number
-    sensor = pins.analogReadPin(AnalogPin.P0)
-    return sensor
-    }
+    export function readSensors(): number {
+      let result: number
+      result = 0
+      if (pins.analogReadPin(AnalogPin.P0) > 200) {
+        result += 100
+      }
+      if (pins.analogReadPin(AnalogPin.P1) > 200) {
+        result += 10
+      }
+      if (pins.analogReadPin(AnalogPin.P2) > 200) {
+        result += 1
+      }
 
-    /*
-    * Return the real IR values of IR sensors
-    */
-    //% block
-    export function readCentreSensor(): number {
-      let sensor: number
-      sensor = pins.analogReadPin(AnalogPin.P1)
-      return sensor
-    }
-
-    /*
-    * Return the real IR values of IR sensors
-    */
-    //% block
-    export function readRightSensor(): number {
-      let sensor: number
-      sensor = pins.analogReadPin(AnalogPin.P2)
-      return sensor
+      return result
     }
 
     /**
