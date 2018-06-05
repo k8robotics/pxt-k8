@@ -7,9 +7,9 @@ enum k8Moto {
 
 enum k8Invert {
     //% block="forward"
-    FORWARD = 0,
+    FORWARD = 1,
     //% block="reverse"
-    REVERSE = 1
+    REVERSE = 0
 }
 
 
