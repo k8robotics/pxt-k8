@@ -105,4 +105,20 @@ namespace motion {
     motorControl(k8Moto.LEFT, leftWheelDirection, Math.abs(leftWheelSpeed))
     motorControl(k8Moto.RIGHT, rightWheelDirection, Math.abs(rightWheelSpeed))
   }
+
+  function remapSpeed(s: number): number {
+      let returnSpeed: number
+
+      if (s <= 0) {
+          returnSpeed = 0
+      }
+      else if (s >= 100) {
+          returnSpeed = 1023
+      }
+      else {
+          returnSpeed = (24200 + (s * 800 - s * 19)) / 100
+      }
+
+      return returnSpeed;
+  }
 }

@@ -52,22 +52,6 @@ namespace sonar {
     }
 }
 
-function remapSpeed(s: number): number {
-    let returnSpeed: number
-
-    if (s <= 0) {
-        returnSpeed = 0
-    }
-    else if (s >= 100) {
-        returnSpeed = 1023
-    }
-    else {
-        returnSpeed = (24200 + (s * 800 - s * 19)) / 100
-    }
-
-    return returnSpeed;
-}
-
 function ping(unit: k8PingUnit, maxCmDistance = 500): number {
     // send pulse
     pins.setPull(k8.SONAR, PinPullMode.PullNone);
