@@ -1,6 +1,6 @@
 {
     "name": "k8",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "k8 Robotics Kit",
     "license": "MIT",
     "dependencies": {
@@ -8,7 +8,9 @@
     },
     "files": [
         "README.md",
-        "k8.ts"
+        "infrared.ts",
+        "motion.ts",
+        "sonar.ts"
     ],
     "testFiles": [
         "k8-tests.ts"
