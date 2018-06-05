@@ -7,9 +7,9 @@ enum k8Moto {
 
 enum k8Invert {
     //% block="forward"
-    FORWARD = 1,
+    FORWARD = 0,
     //% block="reverse"
-    REVERSE = 0
+    REVERSE = 1
 }
 
 
@@ -78,21 +78,15 @@ namespace motion {
     //% weight=80
     export function motorControl(whichMotor: k8Moto, direction: k8Invert, speed: number): void {
         let motorSpeed: number
-        let invertDirection: number
         motorSpeed = remapSpeed(speed)
 
-        if (direction == k8Invert.FORWARD)
-            invertDirection = 0
-        else if (direction == k8Invert.REVERSE)
-            invertDirection = 1
-
         if (whichMotor == 0) {
-            pins.digitalWritePin(k8.M2_DIR, invertDirection)
+            pins.digitalWritePin(k8.M2_DIR, direction)
             pins.analogSetPeriod(k8.M2_PWR, 512)
             pins.analogWritePin(k8.M2_PWR, motorSpeed)
         }
         else if (whichMotor == 1) {
-            pins.digitalWritePin(k8.M1_DIR, invertDirection)
+            pins.digitalWritePin(k8.M1_DIR, direction)
             pins.analogSetPeriod(k8.M1_PWR, 512)
             pins.analogWritePin(k8.M1_PWR, motorSpeed)
         }
