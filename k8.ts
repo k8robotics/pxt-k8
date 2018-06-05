@@ -7,8 +7,8 @@ namespace k8 {
   export let SERVO_2 = AnalogPin.P8
   export let SONAR = DigitalPin.P8
   export let SERVO_1 = AnalogPin.P12
-  export let M2_PWR = AnalogPin.P13
-  export let M2_DIR = AnalogPin.P14
-  export let M1_PWR = AnalogPin.P15
-  export let M1_DIR = AnalogPin.P16
+  export let M2_PWR = DigitalPin.P13
+  export let M2_DIR = DigitalPin.P14
+  export let M1_PWR = DigitalPin.P15
+  export let M1_DIR = DigitalPin.P16
 }
