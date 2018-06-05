@@ -8,6 +8,6 @@ enum k8Pins {
   servo1 = 19,
   motor2Pwr = 20,
   motor2Dir = 21,
-  motor1Pwr = 22
+  motor1Pwr = 22,
   motor1Dir = 23
 }

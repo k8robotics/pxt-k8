@@ -19,8 +19,6 @@ namespace sonar {
 
         for (let index = 0; index <= 4; index++) {
             list[index] = ping(
-                k8Pins.sonar,
-                k8Pins.sonar,
                 k8PingUnit.Centimeters
             )
         }
