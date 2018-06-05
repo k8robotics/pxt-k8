@@ -25,13 +25,13 @@ namespace motion {
 
         motorSpeed = remapSpeed(speed)
 
-        pins.digitalWritePin(k8Pins.motorADir, 0)
-        pins.analogSetPeriod(k8Pins.motorAPwr, 256)
+        pins.digitalWritePin(k8.M1_DIR, 0)
+        pins.analogSetPeriod(k8.M1_PWR, 256)
 
-        pins.digitalWritePin(k8Pins.motor2Dir, 1)
-        pins.analogSetPeriod(k8Pins.motor2Pwr, 256)
-        pins.analogWritePin(k8Pins.motorAPwr, motorSpeed)
-        pins.analogWritePin(k8Pins.motor2Pwr, motorSpeed)
+        pins.digitalWritePin(k8.M2_DIR, 1)
+        pins.analogSetPeriod(k8.M2_PWR, 256)
+        pins.analogWritePin(k8.M1_PWR, motorSpeed)
+        pins.analogWritePin(k8.M2_PWR, motorSpeed)
     }
 
     /**
@@ -43,13 +43,13 @@ namespace motion {
 
         motorSpeed = remapSpeed(speed)
 
-        pins.digitalWritePin(k8Pins.motor1Dir, 0)
-        pins.analogSetPeriod(k8Pins.motor1Pwr, 512)
+        pins.digitalWritePin(k8.M1_DIR, 0)
+        pins.analogSetPeriod(k8.M1_PWR, 512)
 
-        pins.digitalWritePin(k8Pins.motor2Dir, 1)
-        pins.analogSetPeriod(k8Pins.motor2Pwr, 512)
-        pins.analogWritePin(k8Pins.motor1Pwr, motorSpeed)
-        pins.analogWritePin(k8Pins.motor2Pwr, 0)
+        pins.digitalWritePin(k8.M2_DIR, 1)
+        pins.analogSetPeriod(k8.M2_PWR, 512)
+        pins.analogWritePin(k8.M1_PWR, motorSpeed)
+        pins.analogWritePin(k8.M2_PWR, 0)
     }
 
     /**
@@ -61,13 +61,13 @@ namespace motion {
 
         motorSpeed = remapSpeed(speed)
 
-        pins.digitalWritePin(k8Pins.motor1Dir, 0)
-        pins.analogSetPeriod(k8Pins.motor1Pwr, 512)
+        pins.digitalWritePin(k8.M1_DIR, 0)
+        pins.analogSetPeriod(k8.M1_PWR, 512)
 
-        pins.digitalWritePin(k8Pins.motor2Dir, 1)
-        pins.analogSetPeriod(k8Pins.motor2Pwr, 512)
-        pins.analogWritePin(k8Pins.motor1Pwr, 0)
-        pins.analogWritePin(k8Pins.motor2Pwr, motorSpeed)
+        pins.digitalWritePin(k8.M2_DIR, 1)
+        pins.analogSetPeriod(k8.M2_PWR, 512)
+        pins.analogWritePin(k8.M1_PWR, 0)
+        pins.analogWritePin(k8.M2_PWR, motorSpeed)
     }
 
     /**
@@ -87,14 +87,14 @@ namespace motion {
             invertDirection = 1
 
         if (whichMotor == 0) {
-            pins.digitalWritePin(k8Pins.motor2Dir, direction)
-            pins.analogSetPeriod(k8Pins.motor2Pwr, 512)
-            pins.analogWritePin(k8Pins.motor2Pwr, motorSpeed)
+            pins.digitalWritePin(k8.M2_DIR, direction)
+            pins.analogSetPeriod(k8.M2_PWR, 512)
+            pins.analogWritePin(k8.M2_PWR, motorSpeed)
         }
         else if (whichMotor == 1) {
-            pins.digitalWritePin(k8Pins.motor1Dir, invertDirection)
-            pins.analogSetPeriod(k8Pins.motor1Pwr, 512)
-            pins.analogWritePin(k8Pins.motor1Pwr, motorSpeed)
+            pins.digitalWritePin(k8.M1_DIR, invertDirection)
+            pins.analogSetPeriod(k8.M1_PWR, 512)
+            pins.analogWritePin(k8.M1_PWR, motorSpeed)
         }
     }
     /**

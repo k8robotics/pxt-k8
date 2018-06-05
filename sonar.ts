@@ -70,15 +70,15 @@ function remapSpeed(s: number): number {
 
 function ping(unit: k8PingUnit, maxCmDistance = 500): number {
     // send pulse
-    pins.setPull(k8Pins.sonar, PinPullMode.PullNone);
-    pins.digitalWritePin(k8Pins.sonar, 0);
+    pins.setPull(k8.SONAR, PinPullMode.PullNone);
+    pins.digitalWritePin(k8.SONAR, 0);
     control.waitMicros(2);
-    pins.digitalWritePin(k8Pins.sonar, 1);
+    pins.digitalWritePin(k8.SONAR, 1);
     control.waitMicros(10);
-    pins.digitalWritePin(k8Pins.sonar, 0);
+    pins.digitalWritePin(k8.SONAR, 0);
 
     // read pulse
-    const d = pins.pulseIn(k8Pins.sonar, PulseValue.High, maxCmDistance * 58);
+    const d = pins.pulseIn(k8.SONAR, PulseValue.High, maxCmDistance * 58);
 
     switch (unit) {
         case k8PingUnit.Centimeters: return d / 58;
