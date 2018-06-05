@@ -80,17 +80,18 @@ namespace motion {
         let motorSpeed: number
         motorSpeed = remapSpeed(speed)
 
-        if (whichMotor == 0) {
+        
+        if (whichMotor == k8Moto.Left) {
+            pins.digitalWritePin(k8.M1_DIR, direction)
+            pins.analogSetPeriod(k8.M1_PWR, 512)
+            pins.analogWritePin(k8.M1_PWR, motorSpeed)
+        } else if (whichMotor == k8Moto.RIGHT) {
             pins.digitalWritePin(k8.M2_DIR, direction)
             pins.analogSetPeriod(k8.M2_PWR, 512)
             pins.analogWritePin(k8.M2_PWR, motorSpeed)
         }
-        else if (whichMotor == 1) {
-            pins.digitalWritePin(k8.M1_DIR, direction)
-            pins.analogSetPeriod(k8.M1_PWR, 512)
-            pins.analogWritePin(k8.M1_PWR, motorSpeed)
-        }
     }
+
     /**
     * Simplified drive function built on top of motorControl
     */

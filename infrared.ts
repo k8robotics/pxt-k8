@@ -26,13 +26,13 @@ namespace infrared {
     export function readSensors(): number {
       let result: number
       result = 0
-      if (pins.analogReadPin(k8.IR_SENSOR_0) > 200) {
+      if (pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200) {
         result += 100
       }
-      if (pins.analogReadPin(k8.IR_SENSOR_1) > 200) {
+      if (pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200) {
         result += 10
       }
-      if (pins.analogReadPin(k8.IR_SENSOR_2) > 200) {
+      if (pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200) {
         result += 1
       }
 
@@ -50,13 +50,13 @@ namespace infrared {
 
         if (colour == k8Colour.BLACK) {
             if (sensor == k8IRsensor.RIGHT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_0) > 200
+                isSee = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
             }
             else if (sensor == k8IRsensor.CENTRE) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_1) > 200
+                isSee = pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
             }
             else if (sensor == k8IRsensor.LEFT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_2) > 200
+                isSee = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
             }
             else {
                 isSee = false
@@ -64,13 +64,13 @@ namespace infrared {
         }
         else if (colour == k8Colour.WHITE) {
             if (sensor == k8IRsensor.RIGHT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_0) < 200
+                isSee = pins.analogReadPin(k8.IR_SENSOR_LEFT) < 200
             }
             else if (sensor == k8IRsensor.CENTRE) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_1) < 200
+                isSee = pins.analogReadPin(k8.IR_SENSOR_CENTRE) < 200
             }
             else if (sensor == k8IRsensor.LEFT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_2) < 200
+                isSee = pins.analogReadPin(k8.IR_SENSOR_RIGHT) < 200
             }
             else {
                 isSee = false
@@ -87,7 +87,7 @@ namespace infrared {
         led.plot(0, 4)
         led.plot(2, 4)
         led.plot(4, 4)
-        if (pins.analogReadPin(k8.IR_SENSOR_0) > 200) {
+        if (pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200) {
             led.plot(0, 1)
             led.plot(0, 2)
             led.plot(0, 3)
@@ -96,7 +96,7 @@ namespace infrared {
             led.unplot(0, 2)
             led.unplot(0, 3)
         }
-        if (pins.analogReadPin(k8.IR_SENSOR_1) > 200) {
+        if (pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200) {
             led.plot(2, 1)
             led.plot(2, 2)
             led.plot(2, 3)
@@ -105,7 +105,7 @@ namespace infrared {
             led.unplot(2, 2)
             led.unplot(2, 3)
         }
-        if (pins.analogReadPin(k8.IR_SENSOR_2) > 200) {
+        if (pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200) {
             led.plot(4, 1)
             led.plot(4, 2)
             led.plot(4, 3)
