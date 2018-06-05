@@ -10,7 +10,8 @@
         "README.md",
         "infrared.ts",
         "motion.ts",
-        "sonar.ts"
+        "sonar.ts",
+        "k8.ts"
     ],
     "testFiles": [
         "k8-tests.ts"

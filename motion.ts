@@ -16,16 +16,6 @@ enum k8Invert {
 
 //% weight=100 color=#421C52 icon="\uf1b9"
 namespace motion {
-    // Motor defines
-    let M1_PWM: number //M1 also know as A on schematic
-    let M1_DIR: number
-    let M2_PWM: number //M2 also know as B on schematic
-    let M2_DIR: number
-    M1_PWM = DigitalPin.P13
-    M1_DIR = DigitalPin.P14
-    M2_PWM = DigitalPin.P15
-    M2_DIR = DigitalPin.P16
-
     /**
      *Drives the robot straight at a specified speed
      */
@@ -35,13 +25,13 @@ namespace motion {
 
         motorSpeed = remapSpeed(speed)
 
-        pins.digitalWritePin(M1_DIR, 0)
-        pins.analogSetPeriod(M1_PWM, 256)
+        pins.digitalWritePin(k8Pins.motorADir, 0)
+        pins.analogSetPeriod(k8Pins.motorAPwr, 256)
 
-        pins.digitalWritePin(M2_DIR, 1)
-        pins.analogSetPeriod(M2_PWM, 256)
-        pins.analogWritePin(M1_PWM, motorSpeed)
-        pins.analogWritePin(M2_PWM, motorSpeed)
+        pins.digitalWritePin(k8Pins.motor2Dir, 1)
+        pins.analogSetPeriod(k8Pins.motor2Pwr, 256)
+        pins.analogWritePin(k8Pins.motorAPwr, motorSpeed)
+        pins.analogWritePin(k8Pins.motor2Pwr, motorSpeed)
     }
 
     /**
@@ -53,13 +43,13 @@ namespace motion {
 
         motorSpeed = remapSpeed(speed)
 
-        pins.digitalWritePin(M1_DIR, 0)
-        pins.analogSetPeriod(M1_PWM, 512)
+        pins.digitalWritePin(k8Pins.motor1Dir, 0)
+        pins.analogSetPeriod(k8Pins.motor1Pwr, 512)
 
-        pins.digitalWritePin(M2_DIR, 1)
-        pins.analogSetPeriod(M2_PWM, 512)
-        pins.analogWritePin(M1_PWM, motorSpeed)
-        pins.analogWritePin(M2_PWM, 0)
+        pins.digitalWritePin(k8Pins.motor2Dir, 1)
+        pins.analogSetPeriod(k8Pins.motor2Pwr, 512)
+        pins.analogWritePin(k8Pins.motor1Pwr, motorSpeed)
+        pins.analogWritePin(k8Pins.motor2Pwr, 0)
     }
 
     /**
@@ -71,13 +61,13 @@ namespace motion {
 
         motorSpeed = remapSpeed(speed)
 
-        pins.digitalWritePin(M1_DIR, 0)
-        pins.analogSetPeriod(M1_PWM, 512)
+        pins.digitalWritePin(k8Pins.motor1Dir, 0)
+        pins.analogSetPeriod(k8Pins.motor1Pwr, 512)
 
-        pins.digitalWritePin(M2_DIR, 1)
-        pins.analogSetPeriod(M2_PWM, 512)
-        pins.analogWritePin(M1_PWM, 0)
-        pins.analogWritePin(M2_PWM, motorSpeed)
+        pins.digitalWritePin(k8Pins.motor2Dir, 1)
+        pins.analogSetPeriod(k8Pins.motor2Pwr, 512)
+        pins.analogWritePin(k8Pins.motor1Pwr, 0)
+        pins.analogWritePin(k8Pins.motor2Pwr, motorSpeed)
     }
 
     /**
@@ -97,14 +87,14 @@ namespace motion {
             invertDirection = 1
 
         if (whichMotor == 0) {
-            pins.digitalWritePin(M2_DIR, direction)
-            pins.analogSetPeriod(M2_PWM, 512)
-            pins.analogWritePin(M2_PWM, motorSpeed)
+            pins.digitalWritePin(k8Pins.motor2Dir, direction)
+            pins.analogSetPeriod(k8Pins.motor2Pwr, 512)
+            pins.analogWritePin(k8Pins.motor2Pwr, motorSpeed)
         }
         else if (whichMotor == 1) {
-            pins.digitalWritePin(M1_DIR, invertDirection)
-            pins.analogSetPeriod(M1_PWM, 512)
-            pins.analogWritePin(M1_PWM, motorSpeed)
+            pins.digitalWritePin(k8Pins.motor1Dir, invertDirection)
+            pins.analogSetPeriod(k8Pins.motor1Pwr, 512)
+            pins.analogWritePin(k8Pins.motor1Pwr, motorSpeed)
         }
     }
     /**

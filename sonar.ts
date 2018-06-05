@@ -11,16 +11,16 @@ enum k8PingUnit {
 //% weight=100 color=#421C52 icon="\uf1b9"
 namespace sonar {
     /**
- * Displays the distance the robot is from an object (in centimetres)
- */
+    * Displays the distance the robot is from an object (in centimetres)
+    */
     //% block
     export function checkSonar(): number {
         let list = [0, 0, 0, 0, 0];
 
         for (let index = 0; index <= 4; index++) {
             list[index] = ping(
-                DigitalPin.P8,
-                DigitalPin.P8,
+                k8Pins.sonar,
+                k8Pins.sonar,
                 k8PingUnit.Centimeters
             )
         }
@@ -70,17 +70,17 @@ function remapSpeed(s: number): number {
     return returnSpeed;
 }
 
-function ping(trig: DigitalPin, echo: DigitalPin, unit: k8PingUnit, maxCmDistance = 500): number {
+function ping(unit: k8PingUnit, maxCmDistance = 500): number {
     // send pulse
-    pins.setPull(trig, PinPullMode.PullNone);
-    pins.digitalWritePin(trig, 0);
+    pins.setPull(k8Pins.sonar, PinPullMode.PullNone);
+    pins.digitalWritePin(k8Pins.sonar, 0);
     control.waitMicros(2);
-    pins.digitalWritePin(trig, 1);
+    pins.digitalWritePin(k8Pins.sonar, 1);
     control.waitMicros(10);
-    pins.digitalWritePin(trig, 0);
+    pins.digitalWritePin(k8Pins.sonar, 0);
 
     // read pulse
-    const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
+    const d = pins.pulseIn(k8Pins.sonar, PulseValue.High, maxCmDistance * 58);
 
     switch (unit) {
         case k8PingUnit.Centimeters: return d / 58;
