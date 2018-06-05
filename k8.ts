@@ -10,5 +10,5 @@ namespace k8 {
   export let M2_PWR = AnalogPin.P13
   export let M2_DIR = AnalogPin.P14
   export let M1_PWR = AnalogPin.P15
-  export let M2_DIR = AnalogPin.P16
+  export let M1_DIR = AnalogPin.P16
 }
