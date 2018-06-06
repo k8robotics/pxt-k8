@@ -99,6 +99,7 @@ namespace motion {
     //% speed.min=0 speed.max=100
     //% weight=80
     function pureMotorControl(whichMotor: k8Moto, direction: k8Invert, speed: number): void {
+      let motorSpeed: number = speed * 10 + (speed / 100) * 2
         if (whichMotor == k8Moto.LEFT) {
             pins.digitalWritePin(k8.M1_DIR, direction)
             pins.analogSetPeriod(k8.M1_PWR, 512)
