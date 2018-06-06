@@ -51,26 +51,27 @@ namespace sonar {
         distance = list[2]; // return the median of the five measurements made
         return distance;
     }
-}
 
-function ping(trig: DigitalPin, echo: DigitalPin, unit: k8PingUnit, maxCmDistance = 500): number {
-    // send pulse
-    pins.setPull(trig, PinPullMode.PullNone);
-    pins.digitalWritePin(trig, 0);
-    control.waitMicros(2);
-    pins.digitalWritePin(trig, 1);
-    control.waitMicros(10);
-    pins.digitalWritePin(trig, 0);
+    export function ping(trig: DigitalPin, echo: DigitalPin, unit: k8PingUnit, maxCmDistance = 500): number {
+        // send pulse
+        pins.setPull(trig, PinPullMode.PullNone);
+        pins.digitalWritePin(trig, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(trig, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(trig, 0);
 
-    // read pulse
-    const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
+        // read pulse
+        const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
 
-    switch (unit) {
-        case k8PingUnit.Centimeters: return d / 58;
-        case k8PingUnit.Inches: return d / 148;
-        default: return d;
+        switch (unit) {
+            case k8PingUnit.Centimeters: return d / 58;
+            case k8PingUnit.Inches: return d / 148;
+            default: return d;
+        }
     }
 }
+
 // //% weight=100 color=#421C52 icon="\uf1b9"
 // namespace sonar {
 //     /**
