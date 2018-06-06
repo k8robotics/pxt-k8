@@ -93,25 +93,6 @@ namespace motion {
     }
 
     /**
-     *Advanced control of an individual motor. PWM is set to constant value.
-     */
-    //% block
-    //% speed.min=0 speed.max=100
-    //% weight=80
-    function pureMotorControl(whichMotor: k8Moto, direction: k8Invert, speed: number): void {
-      let motorSpeed: number = speed * 10 + (speed / 5) + (speed / 33)
-        if (whichMotor == k8Moto.LEFT) {
-            pins.digitalWritePin(k8.M1_DIR, direction)
-            pins.analogSetPeriod(k8.M1_PWR, 512)
-            pins.analogWritePin(k8.M1_PWR, motorSpeed)
-        } else if (whichMotor == k8Moto.RIGHT) {
-            pins.digitalWritePin(k8.M2_DIR, direction)
-            pins.analogSetPeriod(k8.M2_PWR, 512)
-            pins.analogWritePin(k8.M2_PWR, motorSpeed)
-        }
-    }
-
-    /**
     * Simplified drive function built on top of motorControl
     */
     //% block
@@ -122,8 +103,8 @@ namespace motion {
     let leftWheelDirection = leftWheelSpeed >= 0 ? k8Invert.FORWARD : k8Invert.REVERSE
     let rightWheelDirection = rightWheelSpeed >= 0 ? k8Invert.FORWARD : k8Invert.REVERSE
 
-    pureMotorControl(k8Moto.LEFT, leftWheelDirection, Math.abs(leftWheelSpeed))
-    pureMotorControl(k8Moto.RIGHT, rightWheelDirection, Math.abs(rightWheelSpeed))
+    motorControl(k8Moto.LEFT, leftWheelDirection, Math.abs(leftWheelSpeed))
+    motorControl(k8Moto.RIGHT, rightWheelDirection, Math.abs(rightWheelSpeed))
   }
 
   function remapSpeed(s: number): number {
@@ -136,7 +117,7 @@ namespace motion {
           returnSpeed = 1023
       }
       else {
-          returnSpeed = (24200 + (s * 800 - s * 19)) / 100
+          returnSpeed = (10230 + (s * 900)) / 100
       }
 
       return returnSpeed;
