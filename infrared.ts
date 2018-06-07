@@ -54,24 +54,22 @@ namespace infrared {
     //% block
     export function displaySensors(): void {
       basic.clearScreen()
-      led.plot(0, 4)
-      led.plot(2, 4)
-      led.plot(4, 4)
+      for (i = 0; i < 5; i++)
+        led.plot(i, 4)
 
       if (checkSensor(k8IRsensor.LEFT) > 200) {
-        led.plot(0, 1)
-        led.plot(0, 2)
-        led.plot(0, 3)
+        plotBar(0)
       }
       if (checkSensor(k8IRsensor.CENTRE) > 200) {
-        led.plot(2, 1)
-        led.plot(2, 2)
-        led.plot(2, 3)
+        plotBar(2)
       }
       if (checkSensor(k8IRsensor.RIGHT) > 200) {
-        led.plot(4, 1)
-        led.plot(4, 2)
-        led.plot(4, 3)
+        plotBar(4)
       }
+    }
+    function plotBar(x: number) {
+      led.plot(x, 1)
+      led.plot(x, 2)
+      led.plot(x, 3)
     }
 }
