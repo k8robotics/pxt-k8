@@ -61,7 +61,7 @@ namespace motion {
     //% block
     //% speed.min=-100 speed.max=100
     //% weight=80
-    function motorControl(whichMotor: k8Moto, speed: number): void {
+    function motorControl(whichMotor: Motor, speed: number): void {
         let motorSpeed: number
         let direction: MotorDirection
 
