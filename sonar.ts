@@ -1,4 +1,3 @@
-
 enum k8PingUnit {
     //% block="μs"
     MicroSeconds,
@@ -20,33 +19,9 @@ namespace sonar {
         for (let index = 0; index <= 4; index++) {
             list[index] = ping(k8PingUnit.Centimeters)
         }
+        list = list.sort()
 
-        let len = list.length,     // number of items in the array
-            value: number,                      // the value currently being compared
-            i: number,                          // index into unsorted section
-            j: number,                          // index into sorted section
-            distance: number;
-
-        for (i = 0; i < len; i++) {
-
-            // store the current value because it may shift later
-            value = list[i];
-
-            /*
-             * Whenever the value in the sorted section is greater than the value
-             * in the unsorted section, shift all items in the sorted section over
-             * by one. This creates space in which to insert the value.
-             */
-            for (j = i - 1; j > -1 && list[j] > value; j--) {
-                list[j + 1] = list[j];
-            }
-
-            list[j + 1] = value;
-        }
-
-        distance = list[2]; // return the median of the five measurements made
-
-        return distance;
+        return list[2];
     }
 
     function ping(unit: k8PingUnit, maxCmDistance = 500): number {
