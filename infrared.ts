@@ -7,23 +7,15 @@ enum k8IRsensor {
     LEFT = 9
 }
 
-enum k8Colour {
-    //% block="black"
-    BLACK = 0,
-    //% block="white"
-    WHITE = 1
-}
-
 //% weight=100 color=#18DC29 icon="\uf06e"
 namespace infrared {
-
     /*
     * Return the state of each sensor encoded as a 3 digit number
     * Each digit represents the on/off state of a sensor
     * Hundreds place is 'L', tens place is 'C', ones place is 'R'
     */
     //% block
-    export function readSensors(): number {
+    export function checkSensors(): number {
       let result: number
       result = 0
       if (pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200) {
@@ -45,38 +37,15 @@ namespace infrared {
      * @param colour whether the sensor looks for black or white
      */
     //% block
-    export function checkSensors(sensor: k8IRsensor, colour: k8Colour): boolean {
-        let isSee = true
-
-        if (colour == k8Colour.BLACK) {
-            if (sensor == k8IRsensor.RIGHT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
-            }
-            else if (sensor == k8IRsensor.CENTRE) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
-            }
-            else if (sensor == k8IRsensor.LEFT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
-            }
-            else {
-                isSee = false
-            }
+    export function checkSensor(sensor: k8IRsensor): boolean {
+        switch(sensor) {
+          case k8IRsensor.LEFT:
+            return pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
+          case k8IRsensor.CENTRE:
+            return pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
+          case k8IRsensor.RIGHT:
+            return pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
         }
-        else if (colour == k8Colour.WHITE) {
-            if (sensor == k8IRsensor.RIGHT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_LEFT) < 200
-            }
-            else if (sensor == k8IRsensor.CENTRE) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_CENTRE) < 200
-            }
-            else if (sensor == k8IRsensor.LEFT) {
-                isSee = pins.analogReadPin(k8.IR_SENSOR_RIGHT) < 200
-            }
-            else {
-                isSee = false
-            }
-        }
-        return isSee;
     }
 
     /**
@@ -84,35 +53,25 @@ namespace infrared {
      */
     //% block
     export function displaySensors(): void {
-        led.plot(0, 4)
-        led.plot(2, 4)
-        led.plot(4, 4)
-        if (pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200) {
-            led.plot(0, 1)
-            led.plot(0, 2)
-            led.plot(0, 3)
-        } else {
-            led.unplot(0, 1)
-            led.unplot(0, 2)
-            led.unplot(0, 3)
-        }
-        if (pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200) {
-            led.plot(2, 1)
-            led.plot(2, 2)
-            led.plot(2, 3)
-        } else {
-            led.unplot(2, 1)
-            led.unplot(2, 2)
-            led.unplot(2, 3)
-        }
-        if (pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200) {
-            led.plot(4, 1)
-            led.plot(4, 2)
-            led.plot(4, 3)
-        } else {
-            led.unplot(4, 1)
-            led.unplot(4, 2)
-            led.unplot(4, 3)
-        }
+      basic.clearScreen()
+      led.plot(0, 4)
+      led.plot(2, 4)
+      led.plot(4, 4)
+
+      if (checkSensor(k8IRsensor.LEFT) > 200) {
+        led.plot(0, 1)
+        led.plot(0, 2)
+        led.plot(0, 3)
+      }
+      if (checkSensor(k8IRsensor.CENTRE) > 200) {
+        led.plot(2, 1)
+        led.plot(2, 2)
+        led.plot(2, 3)
+      }
+      if (checkSensor(k8IRsensor.RIGHT) > 200) {
+        led.plot(4, 1)
+        led.plot(4, 2)
+        led.plot(4, 3)
+      }
     }
 }
