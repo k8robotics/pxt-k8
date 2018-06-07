@@ -46,6 +46,7 @@ namespace infrared {
           case k8IRsensor.RIGHT:
             return pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
         }
+        return false
     }
 
     /**
@@ -53,17 +54,18 @@ namespace infrared {
      */
     //% block
     export function displaySensors(): void {
+      let i: number
       basic.clearScreen()
       for (i = 0; i < 5; i++)
         led.plot(i, 4)
 
-      if (checkSensor(k8IRsensor.LEFT) > 200) {
+      if (checkSensor(k8IRsensor.LEFT)) {
         plotBar(0)
       }
-      if (checkSensor(k8IRsensor.CENTRE) > 200) {
+      if (checkSensor(k8IRsensor.CENTRE)) {
         plotBar(2)
       }
-      if (checkSensor(k8IRsensor.RIGHT) > 200) {
+      if (checkSensor(k8IRsensor.RIGHT)) {
         plotBar(4)
       }
     }
