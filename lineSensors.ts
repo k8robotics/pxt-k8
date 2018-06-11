@@ -76,15 +76,15 @@ namespace lineSensors {
         unplotBar(4)
       }
     }
-    
+
     function plotBar(x: number) {
       led.plot(x, 1)
       led.plot(x, 2)
       led.plot(x, 3)
     }
     function unplotBar(x: number) {
-      led.plot(x, 1)
-      led.plot(x, 2)
-      led.plot(x, 3)
+      led.unplot(x, 1)
+      led.unplot(x, 2)
+      led.unplot(x, 3)
     }
 }
