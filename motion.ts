@@ -14,16 +14,48 @@ enum MotorDirection {
 
 //% weight=13 color=#64dd17 icon=""
 namespace motion {
+
     /**
-    * Simplified drive function
+    * Control the speed and direction of the left wheel
     */
     //% block
+    //% blockId=motion_left block="left wheel|speed: %speed|direction: %direction"
+    //% speed.min=0 speed.max=100
+    //% weight=82
+    export function setLeftWheel(speed: number, direction: MotorDirection): void {
+      if (direction == MotorDirection.REVERSE) {
+        speed *= -1
+      }
+      motorControl(Motor.LEFT, speed)
+    }
+
+    /**
+    * Control the speed and direction of the right wheel
+    */
+    //% block
+    //% blockId=motion_right block="right wheel|speed: %speed|direction: %direction"
+    //% speed.min=0 speed.max=100
+    //% weight=81
+    export function setRightWheel(speed: number, direction: MotorDirection): void {
+      if (direction == MotorDirection.REVERSE) {
+        speed *= -1
+      }
+      motorControl(Motor.RIGHT, speed)
+    }
+
+    /**
+    * Control both wheels in one function
+    * Speeds range from -100 to 100
+    * Negative speeds go backwards, positive go forwards
+    */
+    //% block
+    //% blockId=motion_drive block="drive|left: %leftWheelSpeed|right: %rightWheelSpeed"
     //% leftWheelSpeed.min=-100 leftWheelSpeed.max=100
     //% rightWheelSpeed.min=-100 rightWheelSpeed.max=100
     //% weight=80
     export function drive(leftWheelSpeed: number, rightWheelSpeed: number): void {
-      motorControl(Motor.LEFT, leftWheelSpeed)
-      motorControl(Motor.RIGHT, rightWheelSpeed)
+        motorControl(Motor.LEFT, leftWheelSpeed)
+        motorControl(Motor.RIGHT, rightWheelSpeed)
     }
 
     /**
@@ -31,6 +63,7 @@ namespace motion {
      */
      //% block
      //% speed.min=-100 speed.max=100
+     //% weight = 70
     export function driveStraight(speed: number): void {
         motorControl(Motor.LEFT, speed)
         motorControl(Motor.RIGHT, speed)
@@ -41,6 +74,7 @@ namespace motion {
      */
      //% block
      //% speed.min=-100 speed.max=100
+     //% weight = 60
     export function turnLeft(speed: number): void {
       motorControl(Motor.LEFT, 0)
       motorControl(Motor.RIGHT, speed)
@@ -51,6 +85,7 @@ namespace motion {
      */
      //% block
     //% speed.min=-100 speed.max=100
+    //% weight = 50
     export function turnRight(speed: number): void {
       motorControl(Motor.LEFT, speed)
       motorControl(Motor.RIGHT, 0)

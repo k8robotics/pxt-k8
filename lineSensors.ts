@@ -37,7 +37,7 @@ namespace lineSensors {
      * @param colour whether the sensor looks for black or white
      */
     //% block
-    export function checkSensor(sensor: k8IRsensor): boolean {
+    export function check(sensor: k8IRsensor): boolean {
         switch(sensor) {
           case k8IRsensor.LEFT:
             return pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
