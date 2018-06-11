@@ -12,7 +12,7 @@ enum MotorDirection {
     REVERSE = 1
 }
 
-//% weight=100 color=#64dd17 icon=""
+//% weight=13 color=#64dd17 icon=""
 namespace motion {
     /**
     * Simplified drive function
