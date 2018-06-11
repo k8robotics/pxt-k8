@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "k8.ts",
-        "infrared.ts",
+        "lineSensors.ts",
         "motion.ts",
         "sonar.ts"
     ],
