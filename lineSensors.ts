@@ -55,21 +55,34 @@ namespace lineSensors {
     //% block
     export function displaySensors(): void {
       let i: number
-      basic.clearScreen()
       for (i = 0; i < 5; i++)
         led.plot(i, 4)
 
       if (checkSensor(k8IRsensor.LEFT)) {
         plotBar(0)
+      } else {
+        unplotBar(0)
       }
+
       if (checkSensor(k8IRsensor.CENTRE)) {
         plotBar(2)
+      } else {
+        unplotBar(2)
       }
+
       if (checkSensor(k8IRsensor.RIGHT)) {
         plotBar(4)
+      } else {
+        unplotBar(4)
       }
     }
+    
     function plotBar(x: number) {
+      led.plot(x, 1)
+      led.plot(x, 2)
+      led.plot(x, 3)
+    }
+    function unplotBar(x: number) {
       led.plot(x, 1)
       led.plot(x, 2)
       led.plot(x, 3)
