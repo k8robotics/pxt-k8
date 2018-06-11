@@ -44,9 +44,9 @@ namespace motion {
     }
 
     /**
-    * Control both wheels in one function
-    * Speeds range from -100 to 100
-    * Negative speeds go backwards, positive go forwards
+    * Control both wheels in one function.
+    * Speeds range from -100 to 100.
+    * Negative speeds go backwards, positive go forwards.
     */
     //% block
     //% blockId=motion_drive block="drive|left: %leftWheelSpeed|right: %rightWheelSpeed"
