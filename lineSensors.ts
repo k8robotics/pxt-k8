@@ -7,8 +7,8 @@ enum k8IRsensor {
     LEFT = 9
 }
 
-//% weight=100 color=#18DC29 icon="\uf06e"
-namespace infrared {
+//% weight=100 color=#ab47bc icon="\uf06e"
+namespace lineSensors {
     /*
     * Return the state of each sensor encoded as a 3 digit number
     * Each digit represents the on/off state of a sensor

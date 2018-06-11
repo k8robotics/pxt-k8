@@ -12,7 +12,7 @@ enum MotorDirection {
     REVERSE = 1
 }
 
-//% weight=100 color=#421C52 icon="\uf1b9"
+//% weight=100 color=#64dd17 icon=""
 namespace motion {
     /**
     * Simplified drive function
@@ -25,11 +25,12 @@ namespace motion {
       motorControl(Motor.LEFT, leftWheelSpeed)
       motorControl(Motor.RIGHT, rightWheelSpeed)
     }
+
     /**
      *Drives the robot straight at a specified speed
      */
+     //% block
      //% speed.min=-100 speed.max=100
-    //% block
     export function driveStraight(speed: number): void {
         motorControl(Motor.LEFT, speed)
         motorControl(Motor.RIGHT, speed)
@@ -38,8 +39,8 @@ namespace motion {
     /**
      *Turns the robot to the left at a specified speed
      */
+     //% block
      //% speed.min=-100 speed.max=100
-    //% block
     export function turnLeft(speed: number): void {
       motorControl(Motor.LEFT, 0)
       motorControl(Motor.RIGHT, speed)
@@ -48,8 +49,8 @@ namespace motion {
     /**
      *Turns the robot to the right at a specified speed
      */
+     //% block
     //% speed.min=-100 speed.max=100
-    //% block
     export function turnRight(speed: number): void {
       motorControl(Motor.LEFT, speed)
       motorControl(Motor.RIGHT, 0)

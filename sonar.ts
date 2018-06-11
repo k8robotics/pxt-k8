@@ -7,7 +7,7 @@ enum k8PingUnit {
     Inches
 }
 
-//% weight=100 color=#421C52 icon="\uf1b9"
+//% weight=100 color=#ff9800 icon=""
 namespace sonar {
     /**
     * Displays the distance the robot is from an object (in centimetres)
