@@ -130,14 +130,12 @@ namespace motion {
   // Rescale values from 0 - 100 to 0 - 1023
   function remapSpeed(s: number): number {
       let returnSpeed: number
-      if (s <= 0) {
+      if (s < 0) {
           returnSpeed = 0
-      }
-      else if (s >= 100) {
+      } else if (s >= 100) {
           returnSpeed = 1023
-      }
-      else {
-        returnSpeed = Math.max(100, s * 10)
+      } else {
+        returnSpeed = 100 + (s * 9)
       }
       return returnSpeed;
   }
