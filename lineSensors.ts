@@ -48,14 +48,14 @@ namespace lineSensors {
     //% block
     //% blockId=line_check_sensor block="check %sensor sensor is %colour"
     //% weight=50
-    export function checkSensor(sensor: IRsensor, colour: IRColour): boolean {
+    export function checkSensor(sensor: IRSensor, colour: IRColour): boolean {
       let read: boolean
         switch(sensor) {
-          case IRsensor.LEFT:
+          case IRSensor.LEFT:
             read = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
-          case IRsensor.CENTRE:
+          case IRSensor.CENTRE:
             read = pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
-          case IRsensor.RIGHT:
+          case IRSensor.RIGHT:
             read = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
         }
         if (colour = IRColour.WHITE) {
@@ -74,19 +74,19 @@ namespace lineSensors {
       for (i = 0; i < 5; i++)
         led.plot(i, 4)
 
-      if (checkSensor(IRsensor.LEFT)) {
+      if (checkSensor(IRSensor.LEFT)) {
         plotBar(4)
       } else {
         unplotBar(4)
       }
 
-      if (checkSensor(IRsensor.CENTRE)) {
+      if (checkSensor(IRSensor.CENTRE)) {
         plotBar(2)
       } else {
         unplotBar(2)
       }
 
-      if (checkSensor(IRsensor.RIGHT)) {
+      if (checkSensor(IRSensor.RIGHT)) {
         plotBar(0)
       } else {
         unplotBar(0)
