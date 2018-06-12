@@ -48,7 +48,7 @@ namespace lineSensors {
     //% block
     //% blockId=line_check_sensor block="check %sensor sensor is %colour"
     //% weight=50
-    export function checkSensor(sensor: IRSensor, colour: IRColour): boolean {
+    export function checkSensor(sensor: IRSensor, colour: IRColour = IRColour.BLACK): boolean {
       let read: boolean
         switch(sensor) {
           case IRSensor.LEFT:
