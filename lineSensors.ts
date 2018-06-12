@@ -46,7 +46,7 @@ namespace lineSensors {
      * @param colour whether the sensor looks for black or white
      */
     //% block
-    //% blockId=line_check_sensor block="check %sensor sensor is %colour"
+    //% blockId=line_check_sensor block="check %sensor| sensor is %colour|"
     //% weight=50
     export function checkSensor(sensor: IRSensor, colour: IRColour = IRColour.BLACK): boolean {
       let read: boolean
