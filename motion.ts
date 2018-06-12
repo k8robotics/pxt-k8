@@ -137,7 +137,7 @@ namespace motion {
           returnSpeed = 1023
       }
       else {
-        returnSpeed = Math.min(100, s * 10)
+        returnSpeed = Math.max(100, s * 10)
       }
       return returnSpeed;
   }
