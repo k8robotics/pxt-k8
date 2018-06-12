@@ -107,7 +107,9 @@ namespace motion {
         let motorSpeed: number
         let direction: MotorDirection
 
-        if (motorState == MotorPower.OFF) return
+        if (motorState == MotorPower.OFF) {
+          return
+        }
 
         direction = speed < 0 ? MotorDirection.REVERSE: MotorDirection.FORWARD
         speed = Math.abs(speed)
