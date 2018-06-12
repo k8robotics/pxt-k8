@@ -1,10 +1,10 @@
 enum IRSensor {
     //% block="right"
-    RIGHT = 7,
+    LEFT = 7,
     //% block="centre"
     CENTRE = 8,
     //% block="left"
-    LEFT = 9
+    RIGHT = 9
 }
 
 enum IRColour {
