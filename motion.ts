@@ -1,7 +1,7 @@
 enum Motor {
     //% block="left"
     LEFT = 0,
-    //& block="right"
+    //% block="right"
     RIGHT = 1
 }
 
@@ -12,8 +12,16 @@ enum MotorDirection {
     REVERSE = 1
 }
 
-//% weight=13 color=#64dd17 icon=""
+enum MotorPower {
+  //% block="on"
+  ON,
+  //% block="off"
+  OFF
+}
+
+//% weight=13 color=#00701a icon=""
 namespace motion {
+    let motorState: MotorPower
 
     /**
      *Drives the robot straight at a specified speed
@@ -52,18 +60,6 @@ namespace motion {
     }
 
     /**
-    * Control the speed and direction of a single wheel
-    */
-    //% block
-    //% blockId=motion_single block="drive |wheel: %wheel|speed: %speed"
-    //% speed.min=0 speed.max=100
-    //% weight=49
-    //% advanced=true
-    export function driveWheel(wheel: Motor, speed: number): void {
-      motorControl(wheel, speed)
-    }
-
-    /**
     * Control both wheels in one function.
     * Speeds range from -100 to 100.
     * Negative speeds go backwards, positive go forwards.
@@ -72,11 +68,34 @@ namespace motion {
     //% blockId=motion_drive block="drive |left: %leftWheelSpeed|right: %rightWheelSpeed"
     //% leftWheelSpeed.min=-100 leftWheelSpeed.max=100
     //% rightWheelSpeed.min=-100 rightWheelSpeed.max=100
-    //% weight=48
+    //% weight=40
     //% advanced=true
     export function drive(leftWheelSpeed: number, rightWheelSpeed: number): void {
         motorControl(Motor.LEFT, leftWheelSpeed)
         motorControl(Motor.RIGHT, rightWheelSpeed)
+    }
+
+    /**
+    * Control the speed and direction of a single wheel
+    */
+    //% block
+    //% blockId=motion_single block="drive |wheel: %wheel|speed: %speed"
+    //% speed.min=0 speed.max=100
+    //% weight=30
+    //% advanced=true
+    export function driveWheel(wheel: Motor, speed: number): void {
+      motorControl(wheel, speed)
+    }
+
+    /**
+    * Turn the motors on/off - default on
+    */
+    //% block
+    //% blockId=motion_power block="turn motors |power: %power"
+    //% weight=30
+    //% advanced=true
+    export function setPowers(power: MotorPower): void {
+      motorState = power
     }
 
 
@@ -87,6 +106,8 @@ namespace motion {
     function motorControl(whichMotor: Motor, speed: number): void {
         let motorSpeed: number
         let direction: MotorDirection
+
+        if (motorState == MotorPower.OFF) return
 
         direction = speed < 0 ? MotorDirection.REVERSE: MotorDirection.FORWARD
         speed = Math.abs(speed)
