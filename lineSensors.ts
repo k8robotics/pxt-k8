@@ -53,10 +53,13 @@ namespace lineSensors {
         switch(sensor) {
           case IRSensor.LEFT:
             read = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
+            break
           case IRSensor.CENTRE:
             read = pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
+            break
           case IRSensor.RIGHT:
             read = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
+            break
         }
         if (colour = IRColour.WHITE) {
           return !read
