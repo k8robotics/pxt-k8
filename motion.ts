@@ -19,6 +19,7 @@ namespace motion {
      *Drives the robot straight at a specified speed
      */
      //% block
+     //% blockId=motion_drive_straight block="drive straight |speed: %speed"
      //% speed.min=-100 speed.max=100
      //% weight=70
     export function driveStraight(speed: number): void {
@@ -30,6 +31,7 @@ namespace motion {
      *Turns the robot to the left at a specified speed
      */
      //% block
+     //% blockId=motion_turn_left block="turn left |speed: %speed"
      //% speed.min=0 speed.max=100
      //% weight=60
     export function turnLeft(speed: number): void {
@@ -41,6 +43,7 @@ namespace motion {
      *Turns the robot to the right at a specified speed
      */
      //% block
+     //% blockId=motion_turn_right block="turn right |speed: %speed"
     //% speed.min=0 speed.max=100
     //% weight=50
     export function turnRight(speed: number): void {
@@ -66,7 +69,7 @@ namespace motion {
     * Negative speeds go backwards, positive go forwards.
     */
     //% block
-    //% blockId=motion_drive block="drive|left: %leftWheelSpeed|right: %rightWheelSpeed"
+    //% blockId=motion_drive block="drive |left: %leftWheelSpeed|right: %rightWheelSpeed"
     //% leftWheelSpeed.min=-100 leftWheelSpeed.max=100
     //% rightWheelSpeed.min=-100 rightWheelSpeed.max=100
     //% weight=48
