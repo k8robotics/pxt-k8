@@ -1,10 +1,17 @@
-enum k8IRsensor {
+enum IRSensor {
     //% block="right"
     RIGHT = 7,
     //% block="centre"
     CENTRE = 8,
     //% block="left"
     LEFT = 9
+}
+
+enum IRColour {
+  //% block="black"
+  BLACK,
+  //% block="white"
+  WHITE
 }
 
 //% weight=12 color=#ab47bc icon="\uf06e"
@@ -39,18 +46,22 @@ namespace lineSensors {
      * @param colour whether the sensor looks for black or white
      */
     //% block
-    //% blockId=line_check_sensor block="check|sensor: %sensor"
+    //% blockId=line_check_sensor block="check %sensor sensor is %colour"
     //% weight=50
-    export function checkSensor(sensor: k8IRsensor): boolean {
+    export function checkSensor(sensor: IRsensor, colour: IRColour): boolean {
+      let read: boolean
         switch(sensor) {
-          case k8IRsensor.LEFT:
-            return pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
-          case k8IRsensor.CENTRE:
-            return pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
-          case k8IRsensor.RIGHT:
-            return pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
+          case IRsensor.LEFT:
+            read = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
+          case IRsensor.CENTRE:
+            read = pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
+          case IRsensor.RIGHT:
+            read = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
         }
-        return false
+        if (colour = IRColour.WHITE) {
+          return !read
+        }
+        return read
     }
 
     /**
@@ -63,22 +74,22 @@ namespace lineSensors {
       for (i = 0; i < 5; i++)
         led.plot(i, 4)
 
-      if (checkSensor(k8IRsensor.LEFT)) {
-        plotBar(0)
+      if (checkSensor(IRsensor.LEFT)) {
+        plotBar(4)
       } else {
-        unplotBar(0)
+        unplotBar(4)
       }
 
-      if (checkSensor(k8IRsensor.CENTRE)) {
+      if (checkSensor(IRsensor.CENTRE)) {
         plotBar(2)
       } else {
         unplotBar(2)
       }
 
-      if (checkSensor(k8IRsensor.RIGHT)) {
-        plotBar(4)
+      if (checkSensor(IRsensor.RIGHT)) {
+        plotBar(0)
       } else {
-        unplotBar(4)
+        unplotBar(0)
       }
     }
 
