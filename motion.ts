@@ -21,7 +21,7 @@ enum MotorPower {
 
 //% weight=13 color=#43a047 icon=""
 namespace motion {
-    let motorState: MotorPower
+    let motorState: MotorPower = MotorPower.ON
 
     /**
      *Drives the robot straight at a specified speed
