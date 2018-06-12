@@ -15,6 +15,8 @@ namespace lineSensors {
     * Hundreds place is 'L', tens place is 'C', ones place is 'R'
     */
     //% block
+    //% weight=50
+    //% advanced=true
     export function checkSensors(): number {
       let result: number
       result = 0
@@ -38,6 +40,7 @@ namespace lineSensors {
      */
     //% block
     //% blockId=line_check_sensor block="check|sensor: %sensor"
+    //% weight=50
     export function checkSensor(sensor: k8IRsensor): boolean {
         switch(sensor) {
           case k8IRsensor.LEFT:
@@ -54,6 +57,7 @@ namespace lineSensors {
      * Displays binary values from 3 IR sensors (used for line detection)
      */
     //% block
+    //% weight=80
     export function displaySensors(): void {
       let i: number
       for (i = 0; i < 5; i++)
