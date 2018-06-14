@@ -2,14 +2,6 @@
 
 This library provides functions to interface with the motors, sensors and other inputs & outputs that are part of the k8 Robotics Kit.  
 
-## Basic usage
-
-```blocks
-// Control one of the drive motors (either LEFT or RIGHT) by setting a direction (FORWARD or REEVERSE, where FORWARD spins the right wheel clockwise and the left wheel CCW), and a speed between 0 and 100.
-
-motion.motorControl(k8Moto.RIGHT, k8Invert.FORWARD, 25)
-```
-
 ## Supported targets
 
 * for PXT/microbit
