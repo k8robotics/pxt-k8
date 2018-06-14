@@ -63,7 +63,7 @@ namespace motion {
      *Stop the motors
      */
      //% block
-     //% blockId=motion_stop block="stop"
+     //% blockId=motion_stop block="stop motors"
     //% weight=45
     export function stop(): void {
       motorControl(Motor.LEFT, 0)
