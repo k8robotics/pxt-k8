@@ -146,7 +146,7 @@ namespace motion {
       } else if (s >= 100) {
           returnSpeed = 1023
       } else {
-        returnSpeed = (24200 + (s * 791))/100
+        returnSpeed = (23200 + (s * 791))/100
       }
       return returnSpeed;
   }
