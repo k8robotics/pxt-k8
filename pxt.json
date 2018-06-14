@@ -17,6 +17,5 @@
         "k8-tests.ts"
     ],
 
- "binaryonly": true,
  "public": true
 }
