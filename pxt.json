@@ -16,5 +16,7 @@
     "testFiles": [
         "k8-tests.ts"
     ],
-    "public": true
+
+ "binaryonly": true,
+ "public": true
 }
