@@ -60,6 +60,17 @@ namespace motion {
     }
 
     /**
+     *Stop the motors
+     */
+     //% block
+     //% blockId=motion_stop block="stop"
+    //% weight=45
+    export function stop(): void {
+      motorControl(Motor.LEFT, 0)
+      motorControl(Motor.RIGHT, 0)
+    }
+
+    /**
     * Control both wheels in one function.
     * Speeds range from -100 to 100.
     * Negative speeds go backwards, positive go forwards.
