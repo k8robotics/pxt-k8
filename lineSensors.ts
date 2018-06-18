@@ -61,7 +61,7 @@ namespace lineSensors {
             read = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
             break
         }
-        if (colour = IRColour.WHITE) {
+        if (colour == IRColour.WHITE) {
           return !read
         }
         return read
