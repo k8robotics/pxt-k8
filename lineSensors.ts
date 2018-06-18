@@ -50,7 +50,7 @@ namespace lineSensors {
     //% weight=50
     export function checkSensor(sensor: IRSensor, colour: IRColour = IRColour.WHITE): boolean {
       let read: boolean
-        switch(sensor) {
+        switch (sensor) {
           case IRSensor.LEFT:
             read = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
             break
