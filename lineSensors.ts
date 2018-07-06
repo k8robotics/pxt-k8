@@ -1,9 +1,9 @@
 enum IRSensor {
-    //% block="right"
+    //% block="left"
     LEFT = 7,
     //% block="centre"
     CENTRE = 8,
-    //% block="left"
+    //% block="right"
     RIGHT = 9
 }
 
