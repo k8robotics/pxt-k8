@@ -11,7 +11,8 @@
         "k8.ts",
         "lineSensors.ts",
         "motion.ts",
-        "sonar.ts"
+        "sonar.ts",
+        "servos.ts"
     ],
     "testFiles": [
         "k8-tests.ts"

@@ -122,7 +122,7 @@ namespace motion {
           return
         }
 
-        direction = speed < 0 ? MotorDirection.REVERSE: MotorDirection.FORWARD
+        direction = speed < 0 ? MotorDirection.REVERSE : MotorDirection.FORWARD
         speed = Math.abs(speed)
 
         motorSpeed = remapSpeed(speed)
@@ -146,7 +146,7 @@ namespace motion {
       } else if (s >= 100) {
           returnSpeed = 1023
       } else {
-        returnSpeed = (23200 + (s * 791))/100
+        returnSpeed = (23200 + (s * 791)) / 100
       }
       return returnSpeed;
   }
