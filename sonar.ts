@@ -13,6 +13,7 @@ namespace sonar {
     * Displays the distance the robot is from an object (in centimetres)
     */
     //% block
+    //% weight=50
     export function checkSonar(): number {
         let list = [0, 0, 0, 0, 0];
 
@@ -22,6 +23,23 @@ namespace sonar {
         list = list.sort()
 
         return list[2];
+    }
+
+    //% block
+    //% weight=40
+    export function displaySonar(): void {
+        let distance = checkSonar()
+        let x, y: number
+        basic.clearScreen()
+        if (distance < 20) {
+            led.plot(2,4)
+        } else {
+            for (y = 0; y < distance; y += 20) {
+                for (x = 0; x < 5; x++) {
+                    led.plot(x, y)
+                }
+            }
+        }
     }
 
     function ping(unit: k8PingUnit, maxCmDistance = 500): number {
