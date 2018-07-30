@@ -17,26 +17,18 @@ enum IRColour {
 //% weight=12 color=#ab47bc icon="\uf06e"
 namespace lineSensors {
     /*
-    * Return the state of each sensor encoded as a 3 digit number
+    * Return the state of each sensor in an array of boolean
     * Each digit represents the on/off state of a sensor
     * Hundreds place is 'L', tens place is 'C', ones place is 'R'
     */
     //% block
     //% weight=50
     //% advanced=true
-    export function checkSensors(): number {
-      let result: number
-      result = 0
-      if (pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200) {
-        result += 100
-      }
-      if (pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200) {
-        result += 10
-      }
-      if (pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200) {
-        result += 1
-      }
-
+    export function checkAllSensors(): Array<boolean> {
+      let result: Array<boolean>
+      result.push(pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200)
+      result.push(pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200)
+      result.push(pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200)
       return result
     }
 
