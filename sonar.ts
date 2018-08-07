@@ -7,6 +7,7 @@ namespace sonar {
         FURTHER
     }
     let MAX_PULSE = 7800
+
     /**
     * Returns the distance the robot is from an object (in centimetres)
     * Max range 150cm
@@ -25,7 +26,7 @@ namespace sonar {
     }
 
     /**
-     * Test that sonar is closer or further than the threshold
+     * Test that sonar is closer or further than the threshold in cm.
      */
     //% block
     //% blockId=sonar_is block="sonar is %comparison| than %threshold cm"
@@ -40,7 +41,7 @@ namespace sonar {
       }
 
     /**
-    * Display the current sonar reading to leds
+    * Display the current sonar reading to leds.
     */
     //% block
     //% weight=40

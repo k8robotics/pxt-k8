@@ -4,8 +4,8 @@ namespace lineSensors {
   export enum IRSensor {
     //% block="left"
     LEFT = 7,
-    //% block="centre"
-    CENTRE = 8,
+    //% block="middle"
+    MIDDLE = 8,
     //% block="right"
     RIGHT = 9
   }
@@ -17,86 +17,85 @@ namespace lineSensors {
     WHITE
   }
 
-    /*
-    * Return the state of each sensor in an array of boolean
-    * Each digit represents the on/off state of a sensor
-    * Hundreds place is 'L', tens place is 'C', ones place is 'R'
-    */
-    //% block
-    //% weight=50
-    //% advanced=true
-    export function checkAllSensors(): Array<boolean> {
-      let result: Array<boolean>
-      result.push(pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200)
-      result.push(pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200)
-      result.push(pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200)
-      return result
-    }
+  /** 
+  * Check all sensors state and return a boolean array of the results.
+  * Indices: 0 is left, 1 is middle, 2 is right
+  */
+  //% block
+  //% weight=50
+  //% advanced=true
+  export function checkAllSensors(): Array<boolean> {
+    let result: Array<boolean>
+    result.push(pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200)
+    result.push(pins.analogReadPin(k8.IR_SENSOR_MIDDLE) > 200)
+    result.push(pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200)
+    return result
+  }
 
-    /**
-     * Reads binary values from 3 IR sensors
-     * @param sensor which of the three sensors
-     * @param colour whether the sensor looks for black or white
-     */
-    //% block
-    //% blockId=line_check_sensor block="%sensor| sensor is %colour|"
-    //% weight=60
-    export function checkSensor(sensor: IRSensor, colour: IRColour = IRColour.WHITE): boolean {
-      let read: boolean
-        switch (sensor) {
-          case IRSensor.LEFT:
-            read = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
-            break
-          case IRSensor.CENTRE:
-            read = pins.analogReadPin(k8.IR_SENSOR_CENTRE) > 200
-            break
-          case IRSensor.RIGHT:
-            read = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
-            break
-        }
-        if (colour == IRColour.WHITE) {
-          return !read
-        }
-        return read
-    }
-
-    /**
-     * Displays binary values from 3 IR sensors (used for line detection)
-     */
-    //% block
-    //% weight=50
-    export function displaySensors(): void {
-      let i: number
-      for (i = 0; i < 5; i++)
-        led.plot(i, 4)
-
-      if (checkSensor(IRSensor.LEFT)) {
-        plotBar(4)
-      } else {
-        unplotBar(4)
+  /**
+   * Check if a chosen sensor is reading black or white
+   * @param sensor which of the three sensors
+   * @param colour whether the sensor looks for black or white
+   */
+  //% block
+  //% blockId=line_check_sensor block="%sensor| sensor is %colour|"
+  //% weight=60
+  export function checkSensor(sensor: IRSensor, colour: IRColour = IRColour.WHITE): boolean {
+    let read: boolean
+      switch (sensor) {
+        case IRSensor.LEFT:
+          read = pins.analogReadPin(k8.IR_SENSOR_LEFT) > 200
+          break
+        case IRSensor.MIDDLE:
+          read = pins.analogReadPin(k8.IR_SENSOR_MIDDLE) > 200
+          break
+        case IRSensor.RIGHT:
+          read = pins.analogReadPin(k8.IR_SENSOR_RIGHT) > 200
+          break
       }
-
-      if (checkSensor(IRSensor.CENTRE)) {
-        plotBar(2)
-      } else {
-        unplotBar(2)
+      if (colour == IRColour.WHITE) {
+        return !read
       }
+      return read
+  }
 
-      if (checkSensor(IRSensor.RIGHT)) {
-        plotBar(0)
-      } else {
-        unplotBar(0)
-      }
+  /**
+   * Displays current status of all line sensors
+   */
+  //% block
+  //% weight=50
+  export function displaySensors(): void {
+    let i: number
+    for (i = 0; i < 5; i++)
+      led.plot(i, 4)
+
+    if (checkSensor(IRSensor.LEFT)) {
+      plotBar(4)
+    } else {
+      unplotBar(4)
     }
 
-    function plotBar(x: number) {
-      led.plot(x, 1)
-      led.plot(x, 2)
-      led.plot(x, 3)
+    if (checkSensor(IRSensor.MIDDLE)) {
+      plotBar(2)
+    } else {
+      unplotBar(2)
     }
-    function unplotBar(x: number) {
-      led.unplot(x, 1)
-      led.unplot(x, 2)
-      led.unplot(x, 3)
+
+    if (checkSensor(IRSensor.RIGHT)) {
+      plotBar(0)
+    } else {
+      unplotBar(0)
     }
+  }
+
+  function plotBar(x: number) {
+    led.plot(x, 1)
+    led.plot(x, 2)
+    led.plot(x, 3)
+  }
+  function unplotBar(x: number) {
+    led.unplot(x, 1)
+    led.unplot(x, 2)
+    led.unplot(x, 3)
+  }
 }

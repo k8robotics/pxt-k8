@@ -1,6 +1,5 @@
 //% weight=10 color=#01579B icon=""
 namespace servos {
-
     export enum Position {
         //% block="up"
         UP = 85,
@@ -14,6 +13,9 @@ namespace servos {
         DOWN = -85
     }
 
+    /**
+     * Move left servo to the selected position
+     */
     //% block
     //% blockId=servos_set_left block="set left servo to |position: %position"
     //% weight=60
@@ -22,6 +24,9 @@ namespace servos {
         pins.servoWritePin(k8.SERVO_1, -n + 90)
     }
 
+    /**
+     * Move right servo to the selected position
+     */
     //% block
     //% blockId=servos_set_right block="set right servo to |position: %position"
     //% weight=50
@@ -30,6 +35,9 @@ namespace servos {
         pins.servoWritePin(k8.SERVO_2, -n + 90)
     }
 
+    /**
+     * Move both servos back to home position
+     */
     //% block
     //% blockId=servos_reset block="reset servos"
     //% weight=40
@@ -38,6 +46,10 @@ namespace servos {
         pins.servoWritePin(k8.SERVO_2, 90)
     }
 
+    /**
+     * Move left servo to the given position in degrees. 
+     * 0 is home, -90, 90 are the limits backward and forward
+     */
     //% block
     //% blockId=servos_turn_left block="turn left servo |degrees: %degrees"
     //% degrees.min=-90 degrees.max=90
@@ -47,6 +59,10 @@ namespace servos {
         pins.servoWritePin(k8.SERVO_1, -degrees + 90)
     }
 
+    /**
+     * Move left servo to the given position in degrees. 
+     * 0 is home, -90, 90 are the limits backward and forward
+     */
     //% block
     //% blockId=servos_turn_right block="turn right servo |degrees: %degrees"
     //% degrees.min=-90 degrees.max=90
