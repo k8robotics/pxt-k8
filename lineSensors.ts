@@ -1,4 +1,3 @@
-
 //% weight=12 color=#ab47bc icon="\uf06e"
 namespace lineSensors {
   export enum IRSensor {

@@ -72,3 +72,5 @@ namespace servos {
         pins.servoWritePin(k8.SERVO_2, degrees + 90)
     }
 }
+
+servos.resetServos()
