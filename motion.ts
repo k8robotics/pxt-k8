@@ -1,26 +1,25 @@
-enum Motor {
-    //% block="left"
-    LEFT = 0,
-    //% block="right"
-    RIGHT = 1
-}
-
-enum MotorDirection {
-    //% block="forward"
-    FORWARD = 0,
-    //% block="reverse"
-    REVERSE = 1
-}
-
-enum MotorPower {
-  //% block="on"
-  ON,
-  //% block="off"
-  OFF
-}
-
 //% weight=13 color=#43a047 icon=""
 namespace motion {
+    export enum Motor {
+        //% block="left"
+        LEFT = 0,
+        //% block="right"
+        RIGHT = 1
+    }
+
+    export enum MotorDirection {
+        //% block="forward"
+        FORWARD = 0,
+        //% block="reverse"
+        REVERSE = 1
+    }
+
+    export enum MotorPower {
+      //% block="on"
+      ON,
+      //% block="off"
+      OFF
+    }
     let motorState: MotorPower = MotorPower.ON
 
     /**
@@ -103,7 +102,7 @@ namespace motion {
     */
     //% block
     //% blockId=motion_power block="turn motors |power: %power"
-    //% weight=30
+    //% weight=20
     //% advanced=true
     export function setPowers(power: MotorPower): void {
       motorState = power

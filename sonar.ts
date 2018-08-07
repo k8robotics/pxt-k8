@@ -25,10 +25,10 @@ namespace sonar {
     }
 
     /**
-     * Test that sonar is bigger or smaller than a given threshold
+     * Test that sonar is closer or further than the threshold
      */
     //% block
-    //% blockId=sonar_is block="sonar is %comparison| than %threshold| cm"
+    //% blockId=sonar_is block="sonar is %comparison| than %threshold cm"
     //% weight=60
     export function isSonar(comparison: Comparison = Comparison.FURTHER, threshold: number): boolean {
         let distance = checkSonar()

@@ -1,21 +1,22 @@
-enum IRSensor {
+
+//% weight=12 color=#ab47bc icon="\uf06e"
+namespace lineSensors {
+  export enum IRSensor {
     //% block="left"
     LEFT = 7,
     //% block="centre"
     CENTRE = 8,
     //% block="right"
     RIGHT = 9
-}
+  }
 
-enum IRColour {
-  //% block="black"
-  BLACK,
-  //% block="white"
-  WHITE
-}
+  export enum IRColour {
+    //% block="black"
+    BLACK,
+    //% block="white"
+    WHITE
+  }
 
-//% weight=12 color=#ab47bc icon="\uf06e"
-namespace lineSensors {
     /*
     * Return the state of each sensor in an array of boolean
     * Each digit represents the on/off state of a sensor
@@ -39,7 +40,7 @@ namespace lineSensors {
      */
     //% block
     //% blockId=line_check_sensor block="%sensor| sensor is %colour|"
-    //% weight=50
+    //% weight=60
     export function checkSensor(sensor: IRSensor, colour: IRColour = IRColour.WHITE): boolean {
       let read: boolean
         switch (sensor) {
@@ -63,7 +64,7 @@ namespace lineSensors {
      * Displays binary values from 3 IR sensors (used for line detection)
      */
     //% block
-    //% weight=80
+    //% weight=50
     export function displaySensors(): void {
       let i: number
       for (i = 0; i < 5; i++)
