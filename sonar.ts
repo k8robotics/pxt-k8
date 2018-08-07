@@ -1,16 +1,15 @@
-enum k8PingUnit {
-    //% block="μs"
-    MicroSeconds,
-    //% block="cm"
-    Centimeters,
-    //% block="inches"
-    Inches
-}
-
 //% weight=11 color=#ff6f00 icon=""
 namespace sonar {
+    export enum Comparison {
+        //% block="closer"
+        CLOSER,
+        //% block="further"
+        FURTHER
+    }
+    let MAX_PULSE = 7800
     /**
-    * Displays the distance the robot is from an object (in centimetres)
+    * Returns the distance the robot is from an object (in centimetres)
+    * Max range 150cm
     */
     //% block
     //% weight=50
@@ -18,31 +17,40 @@ namespace sonar {
         let list = [0, 0, 0, 0, 0];
 
         for (let index = 0; index <= 4; index++) {
-            list[index] = ping(k8PingUnit.Centimeters)
+            list[index] = ping()
         }
         list = list.sort()
 
         return list[2];
     }
 
+    /**
+     * Test that sonar is bigger or smaller than a given threshold
+     */
+    //% block
+    //% blockId=sonar_is block="sonar is %comparison| than %threshold| cm"
+    //% weight=60
+    export function isSonar(comparison: Comparison = Comparison.FURTHER, threshold: number): boolean {
+        let distance = checkSonar()
+        if (comparison == Comparison.FURTHER) {
+            return threshold >= distance || distance == 0
+        } else {
+            return threshold < checkSonar()
+        }
+      }
+
+    /**
+    * Display the current sonar reading to leds
+    */
     //% block
     //% weight=40
     export function displaySonar(): void {
-        let distance = checkSonar()
-        let x, y: number
-        basic.clearScreen()
-        if (distance < 20) {
-            led.plot(2,4)
-        } else {
-            for (y = 0; y < distance; y += 20) {
-                for (x = 0; x < 5; x++) {
-                    led.plot(x, y)
-                }
-            }
-        }
+        led.plotBarGraph(checkSonar(), 80)
     }
 
-    function ping(unit: k8PingUnit, maxCmDistance = 500): number {
+    // d / 39 is the ratio that most resembled actual centimeters
+    // The datasheet says use d / 58 but that was off by a factor of 2/3
+    function ping(): number {
         // send pulse
         pins.setPull(k8.SONAR, PinPullMode.PullNone);
         pins.digitalWritePin(k8.SONAR, 0);
@@ -52,12 +60,7 @@ namespace sonar {
         pins.digitalWritePin(k8.SONAR, 0);
 
         // read pulse
-        const d = pins.pulseIn(k8.SONAR, PulseValue.High, maxCmDistance * 58);
-
-        switch (unit) {
-            case k8PingUnit.Centimeters: return d / 58;
-            case k8PingUnit.Inches: return d / 148;
-            default: return d;
-        }
+        const d = pins.pulseIn(k8.SONAR, PulseValue.High, MAX_PULSE);
+        return Math.min(150, d / 39)
     }
 }
