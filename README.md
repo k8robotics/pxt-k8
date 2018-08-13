@@ -14,12 +14,21 @@ basic.forever(() => {
 })
 ```
 
+To see the current state of the line sensors.
 ```blocks
 basic.forever(() => {
     lineSensors.displaySensors()
 })
 ```
 
+To initialize servos and move them to a lifted position.
+```blocks
+basic.forever(() => {
+    servos.resetServos()
+    servos.setLeftServoPosition(Position.UP)
+    servos.setRightServoPosition(Position.UP)
+})
+```
 
 ## Supported targets
 

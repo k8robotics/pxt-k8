@@ -1,6 +1,6 @@
 {
     "name": "k8",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "k8 Robotics Kit",
     "license": "MIT",
     "dependencies": {
@@ -12,7 +12,8 @@
         "lineSensors.ts",
         "motion.ts",
         "sonar.ts",
-        "servos.ts",
+        "servos.ts"
+    ], "testFiles": [
         "test.ts"
     ],
     "public": true
