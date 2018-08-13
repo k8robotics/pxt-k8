@@ -12,7 +12,8 @@
         "lineSensors.ts",
         "motion.ts",
         "sonar.ts",
-        "servos.ts"
+        "servos.ts",
+        "test.ts"
     ],
     "public": true
 }

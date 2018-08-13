@@ -1,11 +1,12 @@
+enum Comparison {
+    //% block="closer"
+    CLOSER,
+    //% block="further"
+    FURTHER
+}
+
 //% weight=11 color=#ff6f00 icon=""
 namespace sonar {
-    export enum Comparison {
-        //% block="closer"
-        CLOSER,
-        //% block="further"
-        FURTHER
-    }
     let MAX_PULSE = 7800
 
     /**
@@ -34,9 +35,9 @@ namespace sonar {
     export function isSonar(comparison: Comparison = Comparison.FURTHER, threshold: number): boolean {
         let distance = checkSonar()
         if (comparison == Comparison.FURTHER) {
-            return threshold >= distance || distance == 0
+            return threshold < distance || distance == 0
         } else {
-            return threshold < checkSonar()
+            return threshold >= checkSonar()
         }
       }
 

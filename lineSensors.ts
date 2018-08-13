@@ -1,21 +1,21 @@
+enum IRSensor {
+  //% block="left"
+  LEFT = 7,
+  //% block="middle"
+  MIDDLE = 8,
+  //% block="right"
+  RIGHT = 9
+}
+
+enum IRColour {
+  //% block="black"
+  BLACK,
+  //% block="white"
+  WHITE
+}
+
 //% weight=12 color=#ab47bc icon="\uf06e"
 namespace lineSensors {
-  export enum IRSensor {
-    //% block="left"
-    LEFT = 7,
-    //% block="middle"
-    MIDDLE = 8,
-    //% block="right"
-    RIGHT = 9
-  }
-
-  export enum IRColour {
-    //% block="black"
-    BLACK,
-    //% block="white"
-    WHITE
-  }
-
   /**
    * Check if a chosen sensor is reading black or white
    * @param sensor which of the three sensors
