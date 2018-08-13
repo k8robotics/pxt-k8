@@ -1,6 +1,25 @@
 # k8 Robotics Board
 
-This library provides functions to interface with the motors, sensors and other inputs & outputs that are part of the k8 Robotics Kit.  
+This library provides functions to interface with the motors, sensors and other inputs & outputs that are part of the k8 Robotics Kit. More information at https://www.inksmith.co/k8-robotics-kit.  
+
+## Example Usage
+
+To drive forward, then backward
+```blocks
+basic.forever(() => {
+    motion.driveStraight(50)
+    basic.pause(1000)
+    motion.driveStraight(-50)
+    basic.pause(1000)
+})
+```
+
+```blocks
+basic.forever(() => {
+    lineSensors.displaySensors()
+})
+```
+
 
 ## Supported targets
 
