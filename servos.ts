@@ -32,7 +32,7 @@ namespace servos {
     //% weight=50
      export function setRightServoPosition(position: Position) {
         let n: number = position
-        pins.servoWritePin(k8.SERVO_2, -n + 90)
+        pins.servoWritePin(k8.SERVO_2, n + 90)
     }
 
     /**
