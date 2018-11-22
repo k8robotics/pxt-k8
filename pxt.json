@@ -13,7 +13,8 @@
         "motion.ts",
         "sonar.ts",
         "servos.ts"
-    ], "testFiles": [
+    ],
+    "testFiles": [
         "test.ts"
     ],
     "public": true
