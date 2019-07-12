@@ -130,11 +130,11 @@ namespace motion {
 
         if (whichMotor == Motor.LEFT) {
             pins.digitalWritePin(k8.M1_DIR, direction)
-            pins.analogSetPeriod(k8.M1_PWR, 512)
+            pins.analogSetPeriod(k8.M1_PWR, 1024)
             pins.analogWritePin(k8.M1_PWR, motorSpeed)
         } else {
             pins.digitalWritePin(k8.M2_DIR, direction)
-            pins.analogSetPeriod(k8.M2_PWR, 512)
+            pins.analogSetPeriod(k8.M2_PWR, 1024)
             pins.analogWritePin(k8.M2_PWR, motorSpeed)
         }
     }
