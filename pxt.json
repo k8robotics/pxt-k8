@@ -12,7 +12,9 @@
         "lineSensors.ts",
         "motion.ts",
         "sonar.ts",
-        "servos.ts"
+        "servos.ts",
+		"_locales/fr/k8-strings.json",
+		"_locales/fr/k8-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"

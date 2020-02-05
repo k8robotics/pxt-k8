@@ -1,0 +1,21 @@
+{
+  "lineSensors.checkSensor": "Check if a chosen sensor is reading black or white",
+  "lineSensors.checkSensor|param|colour": "whether the sensor looks for black or white",
+  "lineSensors.checkSensor|param|sensor": "which of the three sensors",
+  "lineSensors.displaySensors": "Displays current status of all line sensors",
+  "motion.drive": "Control both wheels in one function.\nSpeeds range from -100 to 100.\nNegative speeds go backwards, positive go forwards.",
+  "motion.driveStraight": "Drives the robot straight at a specified speed",
+  "motion.driveWheel": "Control the speed and direction of a single wheel",
+  "motion.setPowers": "Turn the motors on/off - default on",
+  "motion.stop": "Stop the motors",
+  "motion.turnLeft": "Turns the robot to the left at a specified speed",
+  "motion.turnRight": "Turns the robot to the right at a specified speed",
+  "servos.resetServos": "Move both servos back to home position",
+  "servos.setLeftServoPosition": "Move left servo to the selected position",
+  "servos.setRightServoPosition": "Move right servo to the selected position",
+  "servos.turnLeftServo": "Move left servo to the given position in degrees. \n0 is home, -90, 90 are the limits backward and forward",
+  "servos.turnRightServo": "Move left servo to the given position in degrees. \n0 is home, -90, 90 are the limits backward and forward",
+  "sonar.checkSonar": "Returns the distance the robot is from an object (in centimetres)\nMax range 150cm",
+  "sonar.displaySonar": "Display the current sonar reading to leds.",
+  "sonar.isSonar": "Test that sonar is closer or further than the threshold in cm."
+}

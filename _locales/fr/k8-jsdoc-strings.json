@@ -1,0 +1,21 @@
+{
+  "lineSensors.checkSensor": "Vérifier si un capteur sélectionné fait la lecture du noir ou du blanc",
+  "lineSensors.checkSensor|param|colour": "si le capteur fait la lecture du noir ou du blanc",
+  "lineSensors.checkSensor|param|sensor": "lequel des trois capteurs",
+  "lineSensors.displaySensors": "Affiche le statut actuel de tous les capteurs de lignes",
+  "motion.drive": "Contrôler les deux roues à l’aide d’une fonction.\r\Vitesses se situent entre -100 et 100.\r\nVitesses négatives vont vers l’arrière, positives vont vers l’avant.",
+  "motion.driveStraight": "Conduit le robot tout droit à une vitesse spécifiée",
+  "motion.driveWheel": "Contrôle la vitesse et la direction d’une seule roue",
+  "motion.setPowers": " Mettre les moteurs en marche/arrêt – par défaut en marche",
+  "motion.stop": "Arrêter les moteurs ",
+  "motion.turnLeft": "Fait tourner le robot à gauche à une vitesse spécifiée",
+  "motion.turnRight": " Fait tourner le robot à droite à une vitesse spécifiée ",
+  "servos.resetServos": "Déplacer les deux servos à la position de départ",
+  "servos.setLeftServoPosition": "Déplacer le servo gauche à la position sélectionnée",
+  "servos.setRightServoPosition": "Déplacer le servo droit à la position sélectionnée",
+  "servos.turnLeftServo": "Déplacer le servo gauche à la position donnée en degrés. \r\n0 est la position de départ, -90, 90 sont les limites arrière/avant",
+  "servos.turnRightServo": "Déplacer le servo droit à la position donnée en degrés. \r\n0 est la position de départ, -90, 90 sont les limites arrière/avant",
+  "sonar.checkSonar": "Renvoie la distance entre le robot et un objet (en centimètres)\r\nPlage maximale 150cm",
+  "sonar.displaySonar": "Afficher la lecture actuelle du sonar aux DELs.",
+  "sonar.isSonar": "Vérifier que le sonar est plus proche ou plus éloigné que le seuil en cm."
+}
