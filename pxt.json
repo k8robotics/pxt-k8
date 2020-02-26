@@ -1,23 +1,26 @@
 {
-    "name": "k8",
-    "version": "1.0.3",
-    "description": "k8 Robotics Kit",
-    "license": "MIT",
-    "dependencies": {
-        "core": "*"
-    },
-    "files": [
-        "README.md",
-        "k8.ts",
-        "lineSensors.ts",
-        "motion.ts",
-        "sonar.ts",
-        "servos.ts",
+	"name": "k8",
+	"version": "1.0.3",
+	"description": "k8 Robotics Kit",
+	"license": "MIT",
+	"dependencies": {
+		"core": "*"
+	},
+	"files": [
+		"README.md",
+		"k8.ts",
+		"lineSensors.ts",
+		"motion.ts",
+		"sonar.ts",
+		"servos.ts",
 		"_locales/fr/k8-strings.json",
-		"_locales/fr/k8-jsdoc-strings.json"
-    ],
-    "testFiles": [
-        "test.ts"
-    ],
-    "public": true
+		"_locales/fr/k8-jsdoc-strings.json",
+		"_locales/es/k8-strings.json",
+		"_locales/es/k8-jsdoc-strings.json"
+
+	],
+	"testFiles": [
+		"test.ts"
+	],
+	"public": true
 }
